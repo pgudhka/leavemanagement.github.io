@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist\css\bootstrap.min.css">
+	<title>LOGIN</title>
+	<style type="text/css">
+		#student-login{
+			width:50%;
+			float:left;
+			margin-top:7%;
+			height:100%;
+			padding:50px;
+			border-right:2px solid;
+		}
+
+		#teacher-login{
+			width:50%;
+			float:right;
+			margin-top:7%;
+			height:100%;
+			padding:50px;
+		}
+
+		form{
+			margin-top: 50px;
+		}
+
+		.btn{
+			margin-top:50px;
+		}
+	</style>
+	<script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+	<script src="bootstrap-3.3.7-dist\js\bootstrap.min.js"></script>
+	<script type="text/javascript">
+		function student_login_check()
+		{
+			var Std_user = document.getElementById('student_username');
+			var user = Std_user.value;
+			var Std_pass = document.getElementById('student_password');
+			var pass = Std_pass.value;
+			if(user==null && pass==null)
+			{
+				slert('Please Enter valid Username and Password');
+				Std_user.focus();
+				return false;
+			}
+			else if(user==null && pass!=null)
+			{
+				alert('Please Enter valid Username');
+				Std_user.focus();
+				return false;
+			}
+			else of(user!=null && pass==null)
+			{
+				alert('Please Enter valid password');
+				Std_pass.focus();
+			}
+			else
+			{
+				return true;
+			}
+		}
+		function teacher_login_check()
+		{
+			var Tea_user = document.getElementById('teacher_username');
+			var user = Tea_user.value;
+			var Tea_pass = document.getElementById('teacher_password');
+			var pass = Tea_pass.value;
+			if(user==null && pass==null)
+			{
+				slert('Please Enter valid Username and Password');
+				Std_user.focus();
+				return false;
+			}
+			else if(user==null && pass!=null)
+			{
+				alert('Please Enter valid Username');
+				Std_user.focus();
+				return false;
+			}
+			else of(user!=null && pass==null)
+			{
+				alert('Please Enter valid password');
+				Std_pass.focus();
+			}
+			else
+			{
+				return true;
+			}
+		}
+	</script>
+</head>
+<body>
+		<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+      			</button>
+				<a href="homepage.html" class="navbar-brand">Leave Management</a>
+			</div>
+			<div class="collapse navbar-collapse" id="navbar">
+				<ul class="nav navbar-nav">
+					<li><a href="acad_calender.html">Academic Calender</a></li>
+					<li><a href="apply.html">Apply</a></li>
+					<li><a href="3">Manage</a></li>
+					<li><a href="3">Contact</a></li>	
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Login</a></li>
+					<li><a href="signup.html">Sign Up</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div id="student-login">
+			<h1 align="center">Student's Login</h1>
+			<form action="student_login.php" method="post">
+				<div class="form-group">
+					<h4>User Id</h4>
+					<input type="text" name="student_username" id="stud_user" placeholder="Enter your User Id here" class="form-control">
+				</div>
+				<div class="form-group">
+					<h4>Password</h4>
+					<input type="password" name="student_password" id="stud_pass" placeholder="Enter your Password" class="form-control">
+					<p><a href="">Forgot Password</a></p>
+					<input type="checkbox" id="std_rem">Remember Me
+				</div>
+				<div class="form-group">
+					<input type="submit" id="std_login" value="Login" class="form-control btn btn-primary" onsubmit="student_login_check()">
+				</div>
+			</form>
+		</div>
+
+		<div id="teacher-login">
+			<h1 align="center">Teacher's Login</h1>
+			<form action="teacher_login.php" method="post">
+				<div class="form-group">
+					<h4>User Id</h4>
+					<input type="text" name="teacher_username" id="teach_user" placeholder="Enter your User Id here" class="form-control">
+				</div>
+				<div class="form-group">
+					<h4>Password</h4>
+					<input type="password" name="teacher_password" id="teach_pass" placeholder="Enter your Password" class="form-control">
+					<p><a href="">Forgot Password</a></p>
+					<input type="checkbox" id="tea_rem">Remember Me
+				</div>
+				<div class="form-group">
+					<input type="submit" id="tea_login" value="Login" class="form-control btn btn-primary" onsubmit="teacher_login_check()">
+				</div>
+			</form>
+		</div>
+	</div>	
+</body>
+</html>

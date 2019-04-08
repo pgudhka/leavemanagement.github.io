@@ -1,0 +1,488 @@
+
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist\css\bootstrap.min.css">
+	<title></title>
+	<style type="text/css">
+		#div1{
+			width:100%;
+			margin-top:5%;
+		}
+
+		#student_details{
+			margin-top: 7%;
+			width:100%;
+			padding-left:200px;
+			padding-right:200px;
+		}
+
+		.name{
+			width:50%;
+			float:left;
+			padding-right:20px;
+			padding-left:20px;
+		}
+
+		.agefeild{
+			width:22%;
+			float:left;
+		}
+
+		.dobfeild{
+			width:50%;
+			float:right;
+		}
+		#agedob{
+			margin-bottom:37px;
+		}
+		#course{
+			width:40%;
+			float:left;
+		}
+		#year{
+			width:40%;
+			float:right;
+		}
+		#stream{
+			width:35%;
+			float:left;
+		}
+		#gender{
+			width:65%;
+			float:right;
+		}
+		.gender{
+			width:1em;
+			height:1em;
+			display: inline-block;
+		}
+		#relation{
+			margin-bottom:80px;
+		}
+		#declaration_check{
+			width:1em;
+			height: 1em;
+			display: inline-block;
+			float: left;
+		}
+		#signup_submit{
+			margin-top:3%;
+			width:50%;
+		}
+		#confirm_signup{
+			text-align: center;
+		}
+		#std_createpass{
+			margin-bottom:5%;
+		}
+		#std_confpass{
+			margin-bottom:5%;
+		}
+		.heads{
+			padding-bottom: 5px;
+			border-bottom: 4px solid #e8e9ea;
+		}
+	</style>
+		<script type="text/javascript">
+		
+			function details_check(){
+				var Std_fname = document.getElementById('stud_fname');
+				var Std_lname = document.getElementById('stud_lname');
+				var fname = Std_fname.value;
+				var lname = Std_lname.value;
+				var valid = /^[A-Za-z]+$/;
+				if(fname.match(valid) && lname.match(valid))
+				{
+					email_check();
+				}
+				else
+				{
+					alert('Enter Valid Name');
+					fname="";
+					lname="";
+					return false;
+				}
+			}
+
+			function email_check(){
+				var Std_email = document.getElementById('stud_email');
+				var stud_email = Std_email.value;
+				var atpos = stud_email.indexOf('@');
+		    	var dotpos = stud_email.lastIndexOf('.');
+		    	if(atpos<1 && (dotpos-atpos)<2)
+		    	{
+		    		alert('Please enter valid E-mail');
+		    		Std_email.focus();
+		    		Std_email.value="";
+		    		return false;
+		    	}
+		    	else
+		    	{
+			    	ctc_check();
+		    	}
+			}
+
+			function ctc_check(){
+				var Std_ctc = document.getElementById('stud_ctc');
+				var stud_ctc = Std_ctc.value;
+				var valid = /^[0-9]+$/;
+				if(stud_ctc.match(valid) && stud_ctc.length()==10)
+				{
+					age_check();
+				}
+				else
+				{
+					alert('Please Enter valid Contact Number');
+					Std_ctc.focus();
+					Std_ctc.value="";
+					return false;
+				}
+			}
+
+			function age_check()
+			{
+				var Std_age = document.getElementById('stud_age');
+				var stud_age = parseInt(Std_age.value);
+				if(stud_age>17)
+				{
+					sapid_check();
+				}
+				else
+				{
+					alert('Please Enter Valid Age');
+					Std_age.focus();
+					Std_age.value="";
+					return false;
+				}
+			}
+			function sapid_check()
+			{
+				var Std_id = document.getElementById('stud_id');
+				var stud_id = Std_id.value;
+				var valid = /^[0-9]+$/;
+				if(stud_id.match(valid) && stud_id.length()>0)
+				{
+					mentorid_check();
+				}
+				else
+				{
+					alert('Please Enter valid SAP ID');
+					Std_id.focus();
+					Std_id.value="";
+					return false;
+				}
+			}
+			function mentorid_check()
+			{
+				var Std_mentor_id = document.getElementById('sutd_mentor_id');
+				var stud_mentor_id = Std_mentor_id.value;
+				var valid = /^[0-9]+$/;
+				if(stud_mentor_id.match(valid) && stud_mentor_id.length()>0)
+				{
+					gender_check();
+				}
+				else
+				{
+					alert('Please Enter Valid Email id');
+					Std_mentor_id.focus();
+					Std_mentor_id.value="";
+					return false;
+				}
+			}
+			function gender_check()
+			{
+				var Gender_male = document.getElementById('gender-male');
+				var Gender_female = document.getElementById('gender-female');
+				var Gender_others = document.getElementById('gender-others');
+				if(Gender_male.checked || Gender_female.checked || Gender_others.checked)
+				{
+					createpassword_check();
+				}
+				else
+				{
+					alert('Please Select ypur Gender');
+					return false;
+				}
+			}
+			function createpassword_check()
+			{
+				var Std_createpass = document.getElementById('stud_createpass');
+				var stud_createpass = Std_createpass.value;
+				var valid = /^[A-Za-z0-9]+$/;
+				if(stud_createpass.match(valid))
+				{
+					confpass_check();
+				}
+				else
+				{
+					alert('Please Enter correct Password');
+					Std_createpass.focus();
+					Std_createpass.value="";
+					return false;
+				}
+			}
+			function confpass_check()
+			{
+				var Std_createpass = document.getElementById('stud_createpass');
+				var Std_cobfpass = document.getElementById('stud_confpass');
+				var stud_createpass = Std_createpass.value;
+				var stud_confpass = Std_confpass.value;
+				if(stud_createpass.equals(stud_confpass))
+				{
+					parent_name_check();
+				}
+				else
+				{
+					alert('Password Does not Match');
+					Std_confpass.focus();
+					Std_confpass.value="";
+					return false;
+				}
+			}
+			function parent_name_check()
+			{
+				var Par_fname = document.getElementById('parent_fname');
+				var Par_lname = document.getElementById('parent_lname');
+				var fname = Par_fname.value;
+				var lname = Par_lname.value;
+				var valid = /^[A-Za-z]+$/;
+
+				if(fname.match(valid) && lname.match(valid))
+				{
+					par_email_check();
+				}
+				else
+				{
+					alert('Enter Valid Name');
+					fname="";
+					lname="";
+					return false;
+				}
+			}
+			function par_email_check()
+			{
+				var Par_email = document.getElementById('parent_email');
+				var parent_email = Par_email.value;
+				var atpos = parent_email.indexOf('@');
+		    	var dotpos = parent_email.lastIndexOf('.');
+		    	var Std_email = document.getElementById('stud_email');
+				var stud_email = Std_email.value;
+		    	
+				if(stud_email.equals(parent_email)==false)
+				{	
+					alert('Please enter Parents email');
+				}
+				else
+				{
+			    	if(atpos<1 && (dotpos-atpos)<2)
+			    	{
+			    		alert('Please enter valid E-mail');
+			    		Par_email.focus();
+			    		Par_email.value="";
+			    		return false;
+			    	}
+			    	else
+			    	{
+				    	par_ctc_check();
+			    	}
+			    }
+			}
+			function par_ctc_check()
+			{
+				var Par_ctc = document.getElementById('parent_ctc');
+				var par_ctc = Par_ctc.value;
+				var valid = /^[0-9]+$/;
+				var Std_ctc = document.getElementById('stud_ctc');
+				var stud_ctc = Std_ctc.value;
+				if(stud_ctc.equals(par_ctc))
+				{
+					if(par_ctc.match(valid) && par_ctc.length()==10)
+					{
+						return true;
+					}
+					else
+					{
+						alert('Please Enter valid Contact Number');
+						Par_ctc.focus();
+						Par_ctc.value="";
+						return false;
+					}
+				}
+				else
+				{
+					alert('please enter parents contact number');
+				}
+			}
+			function enable_btn()
+			{
+				var check = document.getElementById('declaration_check');
+				var btn = document.getElementById('signup_submit');
+
+				if(check.checked)
+				{
+					btn.disabled = "";
+				}
+				else {
+					btn.disabled = "disabled";
+				}
+			}
+		</script>
+		<script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+		<script src="bootstrap-3.3.7-dist\js\bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+      			</button>
+				<a href="homepage.html" class="navbar-brand">Leave Management</a>
+			</div>
+			<div id="navbar">
+				<ul class="nav navbar-nav">
+					<li><a href="acad_calender.html">Academic Calender</a></li>
+					<li><a href="apply.html">Apply</a></li>
+					<li><a href="3">Manage</a></li>
+					<li><a href="3">Contact</a></li>	
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="login.html">Login</a></li>
+					<li><a href="signup.html">Sign Up</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div id="student_details">
+			<h1 class="heads">Student Details</h1>
+			<form action="signup.php" method="post">
+				<div id="std_fname" class="form-group name">
+					<h4>First Name</h4>
+					<input type="text" id="stud_fname" name="student_fname" placeholder="Enter Your First Name" class="form-control">
+				</div>
+				<div id="std_lname" class="form-group name">
+					<h4>Last Name</h4>
+					<input type="text" id="stud_lname" name="student_lname" placeholder="Enter Your Last Name" class="form-control">
+				</div>
+				<div id="std_email" class="form-group name">
+					<h4>Email Address</h4>
+					<input type="email" id="stud_email" name="student_email" placeholder="Enter Your Email Address" class="form-control">
+				</div>
+				<div id="std_ctc" class="form-group name">
+					<h4>Contact No</h4>
+					<input type="text" id="stud_ctc" name="student_ctc" placeholder="Enter Your Mobile Number" class="form-control">
+				</div>
+				<div id="std_address" class="form-group name">
+					<h4>Address</h4>
+					<textarea id="stud_address" name="student_address" placeholder="Enter Your Address" class="form-control"></textarea>
+				</div>
+				<div class="form-group name" id="agedob">
+					<div id="std_age" class="agefeild">
+						<h4>Age</h4>
+						<input type="number" id="stud_age" name="student_age" placeholder="Age" class="form-control">
+					</div>
+					<div id="std_dob" class="dobfeild">
+						<h4>Date of Birth</h4>
+						<input type="date" id="stud_dob" name="student_dob" class="form-control">
+					</div>
+				</div>	
+				<div class="form-group name" id="std_id">
+					<h4>SAP ID</h4>
+					<input type="text" id="stud_id" name="student_sapid" placeholder="Enter Your SAP Id here" class="form-control">
+				</div>
+				<div class="form-group name" id="std_mentor_id">
+					<h4>Mentor's ID</h4>
+					<input type="text" id="stud_mentor_id" name="student_mentor_id" placeholder="Enter Your Mentor's ID" class="form-control">
+				</div>
+				<div class="form-group name" id="course_details">
+					<div id="course">
+						<h4>Course</h4>
+						<select id="course_select" name="student_course" class="form-control">
+							<option>B.Tech</option>
+							<option>MBA.Tech</option>
+							<option>Pharma.Tech</option>
+						</select>
+					</div>
+					<div id="year">
+						<h4>Year</h4>
+						<select id="year_select" name="student_year" class="form-control">
+							<option>1st Year</option>
+							<option>2nd Year</option>
+							<option>3rd Year</option>
+							<option>4th Year</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group name" id="stream_gender">
+					<div id="stream">
+						<h4>Stream</h4>
+						<select id="stream_select" name="student_stream" class="form-control">
+							<option>CS</option>
+							<option>IT</option>
+							<option>Mechanical</option>
+							<option>EXTC</option>
+							<option>MXTC</option>
+							<option>Civil</option>
+							<option>Pharamacy</option>
+						</select>
+					</div>
+					<div id="gender" class="form-group name">
+						<h4>Gender</h4>
+						<input type="radio" name="gender" id="gender-male" value="Male" class="form-control gender">Male
+						<input type="radio" name="gender" id="gender-female" value="Female" class="form-control gender">Female
+						<input type="radio" name="gender" id="gender-others" value="Others" class="form-control gender">Others
+					</div>
+				</div>
+				<div class="form-group name" id="std_createpass">
+					<h4>Create Password</h4>
+					<input type="password" id="stud_createpass" name="password" placeholder="Type Your Password" class="form-control">
+				</div>
+				<div class="form-group name" id="std_confpass">
+					<h4>Confirm Your Password</h4>
+					<input type="password" id="stud_confpass" placeholder="Retype Your Password" class="form-control">
+				</div>
+			<h1 id="parent_details" class="heads">Parent's / Guardian's Details</h1>
+			<p>Enter the details of any one of them Father, Mother, Guardian</p>
+				<div name="parent_fname" class="form-group name">
+					<h4>First Name</h4>
+					<input type="text" id="parent_fname" placeholder="First Name" name="p_fname" class="form-control">
+				</div>
+				<div name="parent_lname" class="form-group name">
+					<h4>Last Name</h4>
+					<input type="text" id="parent_lname" placeholder="Last Name" name="p_lname" class="form-control">
+				</div>
+				<div name="parent_email" class="form-group name">
+					<h4>Email Address</h4>
+					<input type="email" id="parent_email" placeholder="Email Address" name="p_email" class="form-control">
+				</div>
+				<div name="parent_ctc" class="form-group name">
+					<h4>Contact No</h4>
+					<input type="text" id="parent_ctc" placeholder="Mobile Number" name="p_ctc" class="form-control">
+				</div>
+				<div name="parent_address" class="form-group name">
+					<h4>Address <span style="font-size:13px">(if different from above Address)</span></h4>
+					<textarea id="parent_address" placeholder="Enter Your Address" class="form-control"></textarea>
+				</div>
+				<div id="relation" class="formm-group name">
+					<h4>Relationdhip with You</h4>
+					<select id="relation_select" class="form-control" name="p_relation">
+						<option>Father</option>
+						<option>Mother</option>
+						<option>Guardian</option>
+					</select>
+				</div>
+				<div id="declaration" class="form-group">
+					<input type="checkbox" name="declaration" id="declaration_check" class="form-control" onchange="enable_btn()" ><h5 style="margin-left:20px;">I hereby declare that the details furnished above are true and correct to the best of my knowledge and belief and I undertake to inform you of any changes therein, immediately. In case any of the above information is found to be false or untrue or misleading or misrepresenting, I am aware that I may be held liable for it.</h5>
+				</div>
+				<div id="confirm_signup" class="form-group">
+					<input type="submit" value="Sign Up" class="form-control btn btn-primary" id="signup_submit" onclick="details_check()" disabled="disabled">
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
